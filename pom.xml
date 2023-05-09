@@ -10,7 +10,9 @@
     <modules>
         <module>ganghua-usercenter</module>
         <module>ganghua-business</module>
-        <module>ganghua-config</module>      
+        <module>ganghua-config</module>
+        <module>gateway-web</module>
+        <module>ganghua-common</module>
     </modules>
     
     <parent>
