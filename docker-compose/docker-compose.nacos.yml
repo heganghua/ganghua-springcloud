@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nacos:
+    image: nacos/nacos-server:v2.2.2
+    container_name: sc-nacos-standalone
+    networks:
+      - sc-net
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+    restart: always
+    volumes:
+      - /root/working/nacos/logs:/home/nacos/logs
+      - /root/working/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties
+    ports:
+      - "8848:8848"
+
+networks:
+  sc-net:
+    external: false
