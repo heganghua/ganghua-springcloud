@@ -12,6 +12,7 @@
         <module>ganghua-business</module>
         <module>ganghua-gateway</module>
         <module>webapps</module>
+        <module>ganghua-common</module>
     </modules>
 
     <properties>
