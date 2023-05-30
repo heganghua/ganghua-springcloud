@@ -8,11 +8,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>xyz.ganghua</groupId>
     <artifactId>ganghua-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ganghua-gateway</name>
-    <description>ganghua-gateway</description>
 
     <dependencies>
         <dependency>
