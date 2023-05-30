@@ -1,35 +1,37 @@
 package xyz.ganghua.usercenter.controller;
 
-import javax.annotation.Resource;
-
-import com.alibaba.nacos.api.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
+
 @RestController
-@RefreshScope
 @RequestMapping("/usercenter")
 public class UserCenterController {
 
     @Resource
     private RestTemplate restTemplate;
 
-    @Value("${config.info}")
-    private String configInfo;
+    // 服务提供者的服务名
+    @Value("${service-url.nacos-user-service}")
+    private String serverURL;
+
+    @Value("${server.port}")
+    private String port;
+
+    @GetMapping("/port")
+    public String getPort() {
+        System.out.println("port: >" + port);
+        return port;
+    }
 
     @GetMapping("/pament/{id}")
     public String paymentInfo(@PathVariable("id") Long id) {
-        return String.valueOf(id);
+        return restTemplate.getForObject(serverURL + "/dept/payment/" + id, String.class);
     }
-
-    @GetMapping("/config")
-    public String testNacosConfigCenter() {
-        return configInfo;
-    }
-
 }
+
