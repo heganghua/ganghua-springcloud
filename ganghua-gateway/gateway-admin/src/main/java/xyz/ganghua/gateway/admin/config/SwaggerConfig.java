@@ -18,7 +18,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.springboot.cloud.gateway.admin"))
+                .apis(RequestHandlerSelectors.basePackage("xyz.ganghua.gateway.admin"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -27,7 +27,6 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("网关管理api")
                 .description("网关管理")
-                .termsOfServiceUrl("https://github.com/zhoutaoo/SpringCloud")
                 .version("2.0")
                 .build();
     }

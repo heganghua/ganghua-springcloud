@@ -11,7 +11,9 @@ import java.util.Date;
 
 @Data
 public class BasePo implements Serializable {
+
     public final static String DEFAULT_USERNAME = "system";
+
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
 
