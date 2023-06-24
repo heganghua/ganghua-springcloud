@@ -1,12 +1,15 @@
 server:
-  port: 3377 #端口号
+  port: 12306 #端口号
 spring:
   application:
-    name: ganghua-usercenter-engine #服务名
+    name: microServiceCloudUserCenter #服务名
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.136.129:8848 #Nacos服务注册中心地址
+        server-addr: ${REGISTER_HOST:localhost}:${REGISTER_PORT:8848}
       config:
-        server-addr: 192.168.136.129:8848 #Nacos作为配置中心地址
-        file-extension: yaml #指定yaml格式的配置
+        server-addr: ${REGISTER_HOST:localhost}:${REGISTER_PORT:8848}
+        file-extension: yml
+    sentinel:
+      transport:
+        dashboard: ${SENTINEL_DASHBOARD_HOST:localhost}:${SENTINEL_DASHBOARD_PORT:8021}
