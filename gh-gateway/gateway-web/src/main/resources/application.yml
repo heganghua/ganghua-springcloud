@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: dev
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:123456}
+    lettuce:
+      pool:
+        max-active: 300
+logging:
+  level:
+    com.springboot.cloud: debug
+    com.jalja.org.spring: debug
+  file:
+    path: logs/
+
+jatcache:
+  statIntervalMinutes: 1
+  areaInCacheName: false
+  hidePackages: xyz.ganghua
+  local:
+    # 默认永久本地缓存
+    default:
+      type: caffeine
+      keyConvertor: fastjson
+  remote:
+    # 默认永久的远程缓存
+    default:
+      type: redis
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
